@@ -1,0 +1,18 @@
+/* Media quiries */
+$m-from-desktop:          (min-width: 1920px);
+$m-from-laptop:           (min-width: 1366px);
+$m-from-tablet:            (min-width: 768px);
+$m-from-vertical-tablet:   (min-width: 480px);
+$m-from-mobile:            (min-width: 320px);
+
+$m-to-desktop:          (max-width: 1920px);
+$m-to-laptop:           (max-width: 1366px);
+$m-to-tablet:            (max-width: 768px);
+$m-to-vertical-tablet:   (max-width: 480px);
+$m-to-mobile:            (max-width: 320px);
+
+/* Fonts */
+$f-sans-serif: -apple-system, system-ui, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+
+/* Colors  */
+
