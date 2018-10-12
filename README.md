@@ -1,6 +1,6 @@
 # Gulp-starter-kit
 
-# Usage
+## Usage
 ```
 npm i
 gulp
