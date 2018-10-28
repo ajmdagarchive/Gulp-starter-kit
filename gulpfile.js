@@ -5,6 +5,7 @@ const gulpIf = require("gulp-if");
 const autoprefixer = require("gulp-autoprefixer");
 const pug = require("gulp-pug");
 const cleanCSS = require("gulp-clean-css");
+const minify = require('gulp-minify');
 const del = require("del");
 const babel = require("gulp-babel");
 const browserify = require("gulp-browserify");
@@ -41,16 +42,28 @@ gulp.task("pug", () =>
 // Удаление папки для публикации проекта (dist)
 gulp.task("clean", () => del("dist"));
 
-gulp.task("scripts", () =>
-  gulp
-    .src("./src/js/*.js")
-    .pipe(
-      babel({
-        presets: ["env"]
-      })
-    )
-    .pipe(browserify({ debug: true }))
-    .pipe(gulp.dest("./dist/js"))
+// Компиляция js
+gulp.task('scripts', () =>
+	gulp
+		.src('./src/js/*.js')
+		.pipe(
+			babel({
+				presets: ['env']
+			})
+		)
+		.pipe(browserify({ debug: true }))
+		.pipe(
+			gulpIf(
+				!isDevelopment,
+				minify({
+					ext: {
+						min: '.js'
+					},
+					noSource: true
+				})
+			)
+		)
+		.pipe(gulp.dest('./dist/scripts'))
 );
 
 // Слежка => перекомпиляция и копирование при изменении
